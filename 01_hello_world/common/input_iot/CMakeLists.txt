@@ -1,0 +1,7 @@
+set (app_src input_iot.c)
+set (pri_req )
+
+idf_component_register(SRCS ${app_src}
+                       INCLUDE_DIRS "."
+                       REQUIRES ${pri_req}
+                       PRIV_REQUIRES esp_driver_gpio)
