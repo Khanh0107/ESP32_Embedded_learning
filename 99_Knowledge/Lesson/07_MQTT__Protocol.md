@@ -372,3 +372,7 @@ Receive data
 2. Send data from MQTTFX client and receive it on ESP32
 
 <img src="..\Image\ESP_receive_data_from_MQTTFx.png">
+
+### 15. Code reference
+
+- [Code reference](../../05_ssl_mutual_auth)
