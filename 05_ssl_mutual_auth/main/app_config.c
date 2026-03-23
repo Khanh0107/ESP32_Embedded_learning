@@ -19,7 +19,7 @@ static const char *TAG = "CONFIG_WIFI";
 
 // PROVISION_SMARTCONFIG: Use SmartConfig for WiFi provisioning.
 // PROVISION_ACCESSPOINT: Use Access Point mode for WiFi provisioning.
-provision_type_t provision_type = PROVISION_ACCESSPOINT;
+provision_type_t provision_type = PROVISION_ACCESSPOINT;  // Change this to switch between provisioning methods
 
 static EventGroupHandle_t s_wifi_event_group;
 

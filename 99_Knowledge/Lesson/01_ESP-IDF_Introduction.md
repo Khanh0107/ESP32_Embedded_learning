@@ -24,9 +24,13 @@ ESP-IDF provides a complete software development environment including:
 
 ### ESP-IDF Download
 
-Official download link for ESP-IDF:
+- Official download link for ESP-IDF:
 
 https://dl.espressif.com/dl/esp-idf/
+
+- ESP documentation and API reference:
+
+https://docs.espressif.com/projects/esp-idf/en/stable/esp32/
 
 ---
 

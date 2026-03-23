@@ -115,6 +115,8 @@ static const httpd_uri_t http_post = {
 
 void app_http_server_start(void)
 {
+    char *pt = index_html_start;
+    ESP_LOGW(TAG, "<==> Address HTML: 0x%x", (unsigned int) pt);
     // httpd_handle_t server = NULL;
     httpd_config_t config = HTTPD_DEFAULT_CONFIG();
 

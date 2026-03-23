@@ -23,14 +23,18 @@ The implementation uses:
 
 ## 2. System Architecture
 
-ESP32 ↓ (WiFi - 802.11) Internet ↓ (TCP/IP) api.thingspeak.com
+```
+ESP32 ↔ WiFi (802.11) ↔ Internet ↔ TCP/IP ↔ api.thingspeak.com
+```
 
-Protocol stack:
+### Protocol Stack (OSI Model)
 
-    Application Layer → HTTP\
-    Transport Layer → TCP\
-    Network Layer → IP\
-    Data Link Layer → WiFi
+| Layer | Protocol |
+|-------|----------|
+| Application Layer | HTTP |
+| Transport Layer | TCP |
+| Network Layer | IP |
+| Data Link Layer | WiFi (802.11) |
 
 ------------------------------------------------------------------------
 

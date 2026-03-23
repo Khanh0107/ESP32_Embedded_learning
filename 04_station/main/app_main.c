@@ -309,11 +309,11 @@ static void thingspeak_get_task(void *pvParameters)
                             ESP_LOGI("TS", "ThingSpeak Humi: %.1f", humidity);
 
                             // Ví dụ điều khiển LED theo nhiệt độ
-                            if (temperature > 30) {
-                                output_io_set_level(GPIO_NUM_2, 1);
-                            } else {
-                                output_io_set_level(GPIO_NUM_2, 0);
-                            }
+                            // if (temperature > 30) {
+                            //     output_io_set_level(GPIO_NUM_2, 1);
+                            // } else {
+                            //     output_io_set_level(GPIO_NUM_2, 0);
+                            // }
                         }
                     }
                     cJSON_Delete(root);
@@ -379,7 +379,7 @@ static void thingspeak_send_task(void *pvParameters)
 
         close(sock);
 
-        vTaskDelay(20000 / portTICK_PERIOD_MS); // ThingSpeak giới hạn 15s
+        vTaskDelay(20000 / portTICK_PERIOD_MS); // ThingSpeak giới hạn tốc độ gửi dữ liệu, tối đa 15s/lần, ở đây mình để 20s để chắc chắn không bị lỗi
     }
 }
 

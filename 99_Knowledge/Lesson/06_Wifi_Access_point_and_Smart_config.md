@@ -6,7 +6,7 @@ This module is responsible for configuring and connecting the ESP32 to a WiFi ne
 
 The system supports **two WiFi provisioning methods**:
 
-1. **SmartConfig (ESP-Touch)**
+1. **Station Mode (SmartConfig)**
    - The ESP32 receives WiFi SSID and password from a mobile phone.
 
 2. **Access Point Mode**
@@ -60,7 +60,7 @@ Provision  Connect WiFi
 
 ---
 
-## 4 SmartConfig (ESP-Touch)
+## 4 Station Mode (SmartConfig) (ESP-Touch)
 
 SmartConfig allows a smartphone to send:
 
@@ -75,7 +75,7 @@ Common applications used:
 - ESP RainMaker
 - ESP SmartConfig apps
 
-## How SmartConfig Works
+## How Station Mode (SmartConfig) Works
 
 The ESPTOUCH protocol transmits WiFi SSID and password to the device using the following process:
 
@@ -213,28 +213,30 @@ Finally, the system confirms the connection and continues execution.
 
 <img src="..\Image\AP_ESP_Wifi_connected.png">
 
-## 6. FreeRTOS Event Groups
+## 6. FreeRTOS, System Configuration and Logging
+
+### 6.1 FreeRTOS Event Groups
 
 The project uses Event Groups for task synchronization.
 
-### Event Bits
+#### Event Bits
 
 - `WIFI_CONNECTED_BIT`
 - `ESPTOUCH_DONE_BIT`
 
-### Create Event Group
+#### Create Event Group
 
 ```c
 s_wifi_event_group = xEventGroupCreate();
 ```
 
-### Set Event Bit
+#### Set Event Bit
 
 ```c
 xEventGroupSetBits(s_wifi_event_group, WIFI_CONNECTED_BIT);
 ```
 
-### Wait for Event
+#### Wait for Event
 
 ```c
 xEventGroupWaitBits(
@@ -250,7 +252,7 @@ xEventGroupWaitBits(
 
 The system waits until WiFi is successfully connected before continuing execution.
 
-## 7. Checking if the Device is Provisioned
+### 6.2 Checking if the Device is Provisioned
 
 **Function used:**
 
@@ -271,7 +273,7 @@ if (wifi_config.sta.ssid[0] != 0x00)
 
 If the SSID is not empty, the device has already been provisioned.
 
-## 8. WiFi Initialization Flow
+### 6.3 WiFi Initialization Flow
 
 Complete initialization process:
 
@@ -296,11 +298,12 @@ app_main()
            │
            └─ connect to WiFi
 ```
-## 9. NVS (Non-Volatile Storage)
+
+### 6.4 NVS (Non-Volatile Storage)
 
 ESP32 stores WiFi credentials in NVS Flash memory.
 
-### Initialization:
+#### Initialization:
 
 ```c
 nvs_flash_init();
@@ -317,7 +320,7 @@ On reboot:
 
 The ESP32 will automatically reconnect to the saved WiFi network.
 
-## 10. Logging System
+### 6.5 Logging System
 
 ESP-IDF provides a logging system.
 
@@ -337,7 +340,7 @@ ESP_LOGI(TAG, "Wifi Connected");
 | ESP_LOGD | Debug |
 | ESP_LOGV | Verbose |
 
-## 11. Key Knowledge from This Project
+## 7. Key Knowledge from This Project
 
 This project covers several important embedded networking concepts.
 

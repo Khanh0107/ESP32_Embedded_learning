@@ -1,4 +1,4 @@
-idf_component_register(SRCS "app_main.c" "app_config.c" "app_http_server.c" "app_mqtt.c" "app_nvs.c"
+idf_component_register(SRCS "app_main.c" "app_config.c" "app_http_server.c" "app_mqtt.c" "app_nvs.c" "app_ota.c"
                     INCLUDE_DIRS ".")
 
 set(req json_parser json_generator)
